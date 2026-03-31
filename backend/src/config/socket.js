@@ -1,6 +1,9 @@
 import jwt from 'jsonwebtoken';
 
+let ioInstance;
+
 export const setupSocketIO = (io) => {
+  ioInstance = io;
   // Middleware to authenticate socket connections
   io.use((socket, next) => {
     const token = socket.handshake.auth.token;
@@ -29,20 +32,32 @@ export const setupSocketIO = (io) => {
       socket.join(`gym-${socket.gymId}`);
     }
 
+    // Explicit room join for users who might not have gymId in token initially
+    socket.on('join:gym', (gymId) => {
+      socket.join(`gym-${gymId}`);
+      socket.gymId = gymId;
+    });
+
     // Notice broadcast
     socket.on('notice:post', (notice) => {
       // simply forward the notice to everyone in the gym room
-      io.to(`gym-${socket.gymId}`).emit('notice:received', notice);
+      if (socket.gymId) {
+        io.to(`gym-${socket.gymId}`).emit('notice:received', notice);
+      }
     });
 
     // Real-time updates
     socket.on('status:update', (data) => {
-      io.to(`gym-${socket.gymId}`).emit('status:changed', data);
+      if (socket.gymId) {
+        io.to(`gym-${socket.gymId}`).emit('status:changed', data);
+      }
     });
 
     // Trainer availability
     socket.on('trainer:available', (data) => {
-      io.to(`gym-${socket.gymId}`).emit('trainer:updated', data);
+      if (socket.gymId) {
+        io.to(`gym-${socket.gymId}`).emit('trainer:updated', data);
+      }
     });
 
     socket.on('disconnect', () => {
@@ -51,4 +66,11 @@ export const setupSocketIO = (io) => {
   });
 
   return io;
+};
+
+export const getIO = () => {
+  if (!ioInstance) {
+    throw new Error('Socket.io not initialized!');
+  }
+  return ioInstance;
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { LayoutDashboard, Building, Users, Award, Megaphone, LineChart, User, Dumbbell, Apple, LogOut, ChevronLeft } from 'lucide-react';
 
 const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
   const { user, logout } = useAuth();
@@ -15,27 +16,26 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
   const isActive = (path) => location.pathname === path;
 
   const navigationItems = user?.role === 'gym_owner' ? [
-    { name: 'Dashboard', path: '/owner/dashboard', icon: '📊' },
-    { name: 'Gym Setup', path: '/owner/gym-setup', icon: '🏢' },
-    { name: 'Members', path: '/owner/members', icon: '👥' },
-    { name: 'Trainers', path: '/owner/trainers', icon: '👨‍🏫' },
-    { name: 'Notices', path: '/owner/notices', icon: '📢' },
-    { name: 'Analytics', path: '/owner/analytics', icon: '📈' },
-    { name: 'Profile', path: '/owner/profile', icon: '👤' },
+    { name: 'Dashboard', path: '/owner/dashboard', icon: <LayoutDashboard className="w-5 h-5" /> },
+    { name: 'Gym Setup', path: '/owner/gym-setup', icon: <Building className="w-5 h-5" /> },
+    { name: 'Members', path: '/owner/members', icon: <Users className="w-5 h-5" /> },
+    { name: 'Trainers', path: '/owner/trainers', icon: <Award className="w-5 h-5" /> },
+    { name: 'Notices', path: '/owner/notices', icon: <Megaphone className="w-5 h-5" /> },
+    { name: 'Analytics', path: '/owner/analytics', icon: <LineChart className="w-5 h-5" /> },
+    { name: 'Profile', path: '/owner/profile', icon: <User className="w-5 h-5" /> },
   ] : [
-    { name: 'Dashboard', path: '/member/dashboard', icon: '📊' },
-    { name: 'Workouts', path: '/member/workouts', icon: '💪' },
-    { name: 'Calories', path: '/member/calories', icon: '🍎' },
-    { name: 'Trainers', path: '/member/trainers', icon: '👨‍🏫' },
-    { name: 'Notices', path: '/member/notices', icon: '📢' },
-    { name: 'Analytics', path: '/member/analytics', icon: '📈' },
-    { name: 'Profile', path: '/member/profile', icon: '👤' },
+    { name: 'Dashboard', path: '/member/dashboard', icon: <LayoutDashboard className="w-5 h-5" /> },
+    { name: 'Workouts', path: '/member/workouts', icon: <Dumbbell className="w-5 h-5" /> },
+    { name: 'Calories', path: '/member/calories', icon: <Apple className="w-5 h-5" /> },
+    { name: 'Trainers', path: '/member/trainers', icon: <Award className="w-5 h-5" /> },
+    { name: 'Notices', path: '/member/notices', icon: <Megaphone className="w-5 h-5" /> },
+    { name: 'Analytics', path: '/member/analytics', icon: <LineChart className="w-5 h-5" /> },
+    { name: 'Profile', path: '/member/profile', icon: <User className="w-5 h-5" /> },
   ];
 
   return (
-    <div className={`bg-white border-r border-neutral-200 transition-all duration-300 ${
-      isCollapsed ? 'w-16' : 'w-64'
-    }`}>
+    <div className={`bg-white border-r border-neutral-200 transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'
+      }`}>
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-neutral-200">
         {!isCollapsed && (
@@ -46,9 +46,8 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
           className="p-2 hover:bg-neutral-100 rounded-lg transition-colors duration-200"
         >
           <svg
-            className={`w-5 h-5 text-neutral-600 transition-transform duration-200 ${
-              isCollapsed ? 'rotate-180' : ''
-            }`}
+            className={`w-5 h-5 text-neutral-600 transition-transform duration-200 ${isCollapsed ? 'rotate-180' : ''
+              }`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -64,11 +63,10 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
           <Link
             key={item.path}
             to={item.path}
-            className={`flex items-center px-3 py-2 rounded-lg transition-all duration-200 ${
-              isActive(item.path)
+            className={`flex items-center px-3 py-2 rounded-lg transition-all duration-200 ${isActive(item.path)
                 ? 'bg-primary-50 text-primary-700 border-r-2 border-primary-600'
                 : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
-            }`}
+              }`}
           >
             <span className="text-lg mr-3">{item.icon}</span>
             {!isCollapsed && (

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button, Input, Alert, Card, CardContent } from '../components/ui';
+import { User, Building } from 'lucide-react';
 
 export const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -136,7 +137,7 @@ export const LoginPage = () => {
                           : 'border-neutral-300 hover:border-neutral-400'
                       }`}
                     >
-                      <div className="text-lg mb-1">👤</div>
+                      <User className={`w-6 h-6 mx-auto mb-2 ${role === 'gym_member' ? 'text-primary-600' : 'text-neutral-400'}`} />
                       <div className="text-sm font-medium">Gym Member</div>
                     </button>
                     <button
@@ -148,7 +149,7 @@ export const LoginPage = () => {
                           : 'border-neutral-300 hover:border-neutral-400'
                       }`}
                     >
-                      <div className="text-lg mb-1">🏢</div>
+                      <Building className={`w-6 h-6 mx-auto mb-2 ${role === 'gym_owner' ? 'text-primary-600' : 'text-neutral-400'}`} />
                       <div className="text-sm font-medium">Gym Owner</div>
                     </button>
                   </div>

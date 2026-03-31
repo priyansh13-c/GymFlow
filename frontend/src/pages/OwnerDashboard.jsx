@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { gymService, memberService, noticeService } from '../services/authService';
 import { useSocket } from '../services/socketService';
 import { Card, CardContent, CardHeader, CardTitle, Button, Input, Alert, LoadingPage, Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '../components/ui';
+import { Users, UserCheck, Clock, DollarSign, Award, Megaphone, LineChart } from 'lucide-react';
 
 export const OwnerDashboard = () => {
   const { user } = useAuth();
@@ -141,7 +142,7 @@ export const OwnerDashboard = () => {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center">
-              <div className="text-3xl mr-4">👥</div>
+              <div className="mr-4 text-primary-500"><Users className="w-8 h-8" /></div>
               <div>
                 <p className="text-sm text-neutral-600">Total Members</p>
                 <p className="text-2xl font-bold text-neutral-900">{members.length}</p>
@@ -153,7 +154,7 @@ export const OwnerDashboard = () => {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center">
-              <div className="text-3xl mr-4">✅</div>
+              <div className="mr-4 text-success-500"><UserCheck className="w-8 h-8" /></div>
               <div>
                 <p className="text-sm text-neutral-600">Active Members</p>
                 <p className="text-2xl font-bold text-neutral-900">{activeMembers.length}</p>
@@ -165,7 +166,7 @@ export const OwnerDashboard = () => {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center">
-              <div className="text-3xl mr-4">⏳</div>
+              <div className="mr-4 text-warning-500"><Clock className="w-8 h-8" /></div>
               <div>
                 <p className="text-sm text-neutral-600">Pending Payments</p>
                 <p className="text-2xl font-bold text-neutral-900">{pendingPayments.length}</p>
@@ -177,7 +178,7 @@ export const OwnerDashboard = () => {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center">
-              <div className="text-3xl mr-4">💰</div>
+              <div className="mr-4 text-success-600"><DollarSign className="w-8 h-8" /></div>
               <div>
                 <p className="text-sm text-neutral-600">Monthly Revenue</p>
                 <p className="text-2xl font-bold text-neutral-900">
@@ -330,7 +331,7 @@ export const OwnerDashboard = () => {
         <Link to="/owner/members">
           <Card hover className="cursor-pointer">
             <CardContent className="p-6 text-center">
-              <div className="text-3xl mb-2">👥</div>
+              <Users className="w-8 h-8 mx-auto mb-2 text-primary-500" />
               <h3 className="font-semibold text-neutral-900">Manage Members</h3>
             </CardContent>
           </Card>
@@ -338,7 +339,7 @@ export const OwnerDashboard = () => {
         <Link to="/owner/trainers">
           <Card hover className="cursor-pointer">
             <CardContent className="p-6 text-center">
-              <div className="text-3xl mb-2">👨‍🏫</div>
+              <Award className="w-8 h-8 mx-auto mb-2 text-primary-500" />
               <h3 className="font-semibold text-neutral-900">Trainers</h3>
             </CardContent>
           </Card>
@@ -346,7 +347,7 @@ export const OwnerDashboard = () => {
         <Link to="/owner/notices">
           <Card hover className="cursor-pointer">
             <CardContent className="p-6 text-center">
-              <div className="text-3xl mb-2">📢</div>
+              <Megaphone className="w-8 h-8 mx-auto mb-2 text-primary-500" />
               <h3 className="font-semibold text-neutral-900">All Notices</h3>
             </CardContent>
           </Card>
@@ -354,7 +355,7 @@ export const OwnerDashboard = () => {
         <Link to="/owner/analytics">
           <Card hover className="cursor-pointer">
             <CardContent className="p-6 text-center">
-              <div className="text-3xl mb-2">📊</div>
+              <LineChart className="w-8 h-8 mx-auto mb-2 text-primary-500" />
               <h3 className="font-semibold text-neutral-900">Analytics</h3>
             </CardContent>
           </Card>

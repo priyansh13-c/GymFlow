@@ -1,4 +1,5 @@
 import Notice from '../models/Notice.js';
+import { getIO } from '../config/socket.js';
 
 // Post notice (gym owner only)
 export const postNotice = async (req, res) => {
@@ -24,6 +25,14 @@ export const postNotice = async (req, res) => {
     
     // Populate with user data
     const populatedNotice = await Notice.findById(notice._id).populate('postedBy', 'name email');
+
+    // Broadcast the new notice to all connected members in this gym
+    try {
+      const io = getIO();
+      io.to(`gym-${gymId}`).emit('notice:received', populatedNotice);
+    } catch (socketError) {
+      console.error('Socket broadcast failed:', socketError);
+    }
 
     res.status(201).json({
       message: 'Notice posted successfully',

@@ -16,7 +16,8 @@ const Input = ({
   const [isFocused, setIsFocused] = useState(false);
   const hasValue = value && value.toString().length > 0;
 
-  const baseClasses = 'w-full px-4 py-3 border rounded-lg transition-all duration-200 focus-ring bg-white';
+  const basePaddingClasses = floatingLabel ? 'px-4 pt-6 pb-2' : 'px-4 py-3';
+  const baseClasses = `w-full ${basePaddingClasses} border rounded-lg transition-all duration-200 focus-ring bg-white`;
   const focusClasses = isFocused || hasValue
     ? 'border-primary-500 shadow-soft'
     : 'border-neutral-300 hover:border-neutral-400';
@@ -56,7 +57,7 @@ const Input = ({
         type={type}
         value={value}
         onChange={onChange}
-        placeholder={placeholder}
+        placeholder={isFocused ? placeholder : ''}
         disabled={disabled}
         required={required}
         className={inputClasses}
@@ -68,8 +69,8 @@ const Input = ({
         <label
           className={`absolute left-4 transition-all duration-200 pointer-events-none ${
             isFocused || hasValue
-              ? 'top-1 text-xs text-primary-600 font-medium'
-              : 'top-3 text-neutral-500 text-sm'
+              ? 'top-1.5 text-xs text-primary-600 font-semibold'
+              : 'top-4 text-neutral-500 text-sm'
           }`}
         >
           {label} {required && <span className="text-error-500">*</span>}

@@ -1,42 +1,75 @@
-import axios from 'axios';
+import fs from 'fs';
+import { GoogleGenAI } from '@google/genai';
 
 /**
- * Call Nutrient/Calorie API to estimate calories from food image
- * Using LogMeal API as example (replace with your preferred API)
+ * Call Gemini AI API to estimate calories from food image
  */
 export const estimateCaloriesFromImage = async (imagePath) => {
   try {
-    // This is a placeholder implementation
-    // Replace with actual API calls based on your chosen service
+    if (!process.env.GEMINI_API_KEY) {
+      throw new Error('GEMINI_API_KEY is not defined in the environment');
+    }
 
-    // Example using FormData for image upload
-    const formData = new FormData();
-    formData.append('image', imagePath);
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    
+    // Read the image file and convert to base64
+    const imageBytes = fs.readFileSync(imagePath);
+    const base64Image = imageBytes.toString('base64');
+    
+    // Determine mime type from extension
+    let mimeType = 'image/jpeg';
+    const lowerPath = imagePath.toLowerCase();
+    if (lowerPath.endsWith('.png')) mimeType = 'image/png';
+    else if (lowerPath.endsWith('.webp')) mimeType = 'image/webp';
+    else if (lowerPath.endsWith('.heic')) mimeType = 'image/heic';
+    else if (lowerPath.endsWith('.heif')) mimeType = 'image/heif';
 
-    const response = await axios.post(
-      `${process.env.NUTRIENT_API_URL}/image/recognition/v2/recognition`,
-      formData,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.NUTRIENT_API_KEY}`,
-        },
+    const prompt = `Analyze this food image. Provide a JSON response containing: 
+    - foodName (string, the name of the main dish/food)
+    - estimatedCalories (number)
+    - estimatedCarbs (number, in grams)
+    - estimatedProtein (number, in grams)
+    - estimatedFats (number, in grams)
+    - aiReasoning (string, brief explanation of what you see and your calculation logic)
+    - confidence (number, 0 to 100 indicating how confident you are in this estimation)
+    
+    Do not include any text outside the JSON block.`;
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: [
+        {
+          role: 'user',
+          parts: [
+            { 
+              inlineData: {
+                data: base64Image,
+                mimeType
+              }
+            },
+            { text: prompt }
+          ]
+        }
+      ],
+      config: {
+        responseMimeType: 'application/json'
       }
-    );
+    });
 
-    // Parse API response and extract calorie data
-    const foodInfo = response.data.results?.[0];
+    const textResponse = response.text;
+    const foodInfo = JSON.parse(textResponse);
     
     return {
-      foodName: foodInfo?.name || 'Unknown',
-      estimatedCalories: foodInfo?.calories || 0,
-      estimatedCarbs: foodInfo?.carbs || 0,
-      estimatedProtein: foodInfo?.protein || 0,
-      estimatedFats: foodInfo?.fats || 0,
-      apiResponse: response.data,
+      foodName: foodInfo.foodName || 'Unknown Food',
+      estimatedCalories: foodInfo.estimatedCalories || 0,
+      estimatedCarbs: foodInfo.estimatedCarbs || 0,
+      estimatedProtein: foodInfo.estimatedProtein || 0,
+      estimatedFats: foodInfo.estimatedFats || 0,
+      apiResponse: foodInfo, // Includes aiReasoning and confidence to save directly to DB if needed
     };
   } catch (error) {
-    console.error('Error calling nutrition API:', error);
-    throw new Error('Failed to estimate calories from image');
+    console.error('Error calling Gemini API:', error);
+    throw new Error('Failed to estimate calories from image via Gemini');
   }
 };
 

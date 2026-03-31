@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { gymService, memberService, workoutService, noticeService } from '../services/authService';
 import { useSocket } from '../services/socketService';
 import { Card, CardContent, CardHeader, CardTitle, Button, Input, Alert, LoadingPage } from '../components/ui';
+import { Dumbbell, Apple, ClipboardList, LineChart, Award, User } from 'lucide-react';
 
 export const MemberDashboard = () => {
   const { user } = useAuth();
@@ -202,7 +203,7 @@ export const MemberDashboard = () => {
             <Card hover>
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
-                  <div className="text-3xl">💪</div>
+                  <div className="text-primary-500"><Dumbbell className="w-8 h-8" /></div>
                   <div>
                     <h3 className="text-lg font-semibold text-neutral-900">Track Workouts</h3>
                     <p className="text-neutral-600">Log your exercises with sets, reps, and weight details</p>
@@ -214,7 +215,7 @@ export const MemberDashboard = () => {
             <Card hover>
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
-                  <div className="text-3xl">🍎</div>
+                  <div className="text-primary-500"><Apple className="w-8 h-8" /></div>
                   <div>
                     <h3 className="text-lg font-semibold text-neutral-900">Calorie Tracking</h3>
                     <p className="text-neutral-600">Upload food images and get AI-powered nutrition analysis</p>
@@ -226,7 +227,7 @@ export const MemberDashboard = () => {
             <Card hover>
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
-                  <div className="text-3xl">📋</div>
+                  <div className="text-primary-500"><ClipboardList className="w-8 h-8" /></div>
                   <div>
                     <h3 className="text-lg font-semibold text-neutral-900">Real-time Notices</h3>
                     <p className="text-neutral-600">Get instant updates and messages from your gym owner</p>
@@ -238,7 +239,7 @@ export const MemberDashboard = () => {
             <Card hover>
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
-                  <div className="text-3xl">📊</div>
+                  <div className="text-primary-500"><LineChart className="w-8 h-8" /></div>
                   <div>
                     <h3 className="text-lg font-semibold text-neutral-900">Analytics</h3>
                     <p className="text-neutral-600">Monitor your progress and fitness metrics</p>
@@ -429,7 +430,7 @@ export const MemberDashboard = () => {
           <Link to="/member/calories">
             <Card hover className="cursor-pointer">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl mb-2">🍎</div>
+                <Apple className="w-8 h-8 mx-auto mb-2 text-primary-500" />
                 <h3 className="font-semibold text-neutral-900">Calories</h3>
               </CardContent>
             </Card>
@@ -437,7 +438,7 @@ export const MemberDashboard = () => {
           <Link to="/member/trainers">
             <Card hover className="cursor-pointer">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl mb-2">👨‍🏫</div>
+                <Award className="w-8 h-8 mx-auto mb-2 text-primary-500" />
                 <h3 className="font-semibold text-neutral-900">Trainers</h3>
               </CardContent>
             </Card>
@@ -445,7 +446,7 @@ export const MemberDashboard = () => {
           <Link to="/member/analytics">
             <Card hover className="cursor-pointer">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl mb-2">📊</div>
+                <LineChart className="w-8 h-8 mx-auto mb-2 text-primary-500" />
                 <h3 className="font-semibold text-neutral-900">Analytics</h3>
               </CardContent>
             </Card>
@@ -453,7 +454,7 @@ export const MemberDashboard = () => {
           <Link to="/member/profile">
             <Card hover className="cursor-pointer">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl mb-2">👤</div>
+                <User className="w-8 h-8 mx-auto mb-2 text-primary-500" />
                 <h3 className="font-semibold text-neutral-900">Profile</h3>
               </CardContent>
             </Card>
