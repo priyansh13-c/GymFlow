@@ -189,4 +189,11 @@ VITE_SOCKET_URL=http://localhost:5001
 
 ---
 
-**Happy Coding! 💪🏋️**
+Screenshots
+
+<img width="1839" height="995" alt="image" src="https://github.com/user-attachments/assets/0d90f21a-407a-4f7a-acc2-b789ae62ecd9" />
+<img width="1901" height="950" alt="image" src="https://github.com/user-attachments/assets/6bcfcab1-7dc8-498b-a02b-aa73e991cc72" />
+<img width="1901" height="950" alt="image" src="https://github.com/user-attachments/assets/6014c3aa-231c-4413-bc51-4fd448d7632d" />
+<img width="1912" height="1055" alt="image" src="https://github.com/user-attachments/assets/c6f3887b-4ca5-4801-8ca0-bd136cbd491e" />
+<img width="1911" height="856" alt="image" src="https://github.com/user-attachments/assets/0436baa2-0182-4891-b6cc-d62f2d29cbb5" />
+<img width="1915" height="997" alt="image" src="https://github.com/user-attachments/assets/4f60acca-7ae9-4394-ac3c-d87b611cf749" />
