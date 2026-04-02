@@ -1,4 +1,4 @@
-# GymFlow - Gym Management System
+# GymFlow - Gym Management System (Some apis under development)
 
 GymFlow is a full-stack gym management web application that helps gym owners manage members and allows gym members to track workouts, memberships, and nutrition.
 
@@ -6,12 +6,12 @@ GymFlow is a full-stack gym management web application that helps gym owners man
 
 ## 🚀 Features
 
-### 🔐 Authentication
+###  Authentication
 - JWT based authentication with refresh tokens
 - Role-based access control
 - Secure password hashing
 
-### 🏋️ Gym Owner Features
+###  Gym Owner Features
 - Create and manage gym profile
 - Generate gym codes for member registration
 - View gym members and statistics
@@ -19,7 +19,7 @@ GymFlow is a full-stack gym management web application that helps gym owners man
 - Post notices to all gym members
 - Manage trainers and bookings
 
-### 👤 Gym Member Features
+###  Gym Member Features
 - Join gyms using a unique gym code
 - View membership details and expiry date
 - Log workouts and exercises
@@ -27,7 +27,7 @@ GymFlow is a full-stack gym management web application that helps gym owners man
 - Book trainer sessions
 - Receive gym notices and updates
 
-### ⚡ Advanced Features
+###  Advanced Features
 - Real-time notifications using Socket.io
 - Membership expiry reminders using Cron Jobs
 - Workout and nutrition tracking
@@ -36,7 +36,7 @@ GymFlow is a full-stack gym management web application that helps gym owners man
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 - React
@@ -60,7 +60,7 @@ GymFlow is a full-stack gym management web application that helps gym owners man
 git clone https://github.com/yourusername/gymflow.git
 cd gymflow
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Backend Setup
 
