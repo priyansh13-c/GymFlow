@@ -72,14 +72,15 @@ setupSocketIO(io);
 // Error handling middleware
 app.use(errorHandler);
 
-// Start cron jobs
-startMembershipExpiryJob();
+// Start cron jobs and server only when not running tests
+if (process.env.NODE_ENV !== 'test') {
+  startMembershipExpiryJob();
 
-// Start server
-const PORT = process.env.PORT || 5001;
-httpServer.listen(PORT, () => {
-  console.log(`✓ Server running on port ${PORT}`);
-  console.log(`✓ Environment: ${process.env.NODE_ENV}`);
-});
+  const PORT = process.env.PORT || 5001;
+  httpServer.listen(PORT, () => {
+    console.log(`✓ Server running on port ${PORT}`);
+    console.log(`✓ Environment: ${process.env.NODE_ENV}`);
+  });
+}
 
 export default app;
