@@ -1,4 +1,4 @@
-# GymFlow - Gym Management System
+# GymFlow - Gym Management System (Some apis under development)
 
 GymFlow is a full-stack gym management web application that helps gym owners manage members and allows gym members to track workouts, memberships, and nutrition.
 
@@ -6,12 +6,12 @@ GymFlow is a full-stack gym management web application that helps gym owners man
 
 ## 🚀 Features
 
-### 🔐 Authentication
+###  Authentication
 - JWT based authentication with refresh tokens
 - Role-based access control
 - Secure password hashing
 
-### 🏋️ Gym Owner Features
+###  Gym Owner Features
 - Create and manage gym profile
 - Generate gym codes for member registration
 - View gym members and statistics
@@ -19,7 +19,7 @@ GymFlow is a full-stack gym management web application that helps gym owners man
 - Post notices to all gym members
 - Manage trainers and bookings
 
-### 👤 Gym Member Features
+###  Gym Member Features
 - Join gyms using a unique gym code
 - View membership details and expiry date
 - Log workouts and exercises
@@ -27,7 +27,7 @@ GymFlow is a full-stack gym management web application that helps gym owners man
 - Book trainer sessions
 - Receive gym notices and updates
 
-### ⚡ Advanced Features
+###  Advanced Features
 - Real-time notifications using Socket.io
 - Membership expiry reminders using Cron Jobs
 - Workout and nutrition tracking
@@ -36,7 +36,7 @@ GymFlow is a full-stack gym management web application that helps gym owners man
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 - React
@@ -60,7 +60,7 @@ GymFlow is a full-stack gym management web application that helps gym owners man
 git clone https://github.com/yourusername/gymflow.git
 cd gymflow
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Backend Setup
 
@@ -189,4 +189,11 @@ VITE_SOCKET_URL=http://localhost:5001
 
 ---
 
-**Happy Coding! 💪🏋️**
+Screenshots
+
+<img width="1839" height="995" alt="image" src="https://github.com/user-attachments/assets/0d90f21a-407a-4f7a-acc2-b789ae62ecd9" />
+<img width="1901" height="950" alt="image" src="https://github.com/user-attachments/assets/6bcfcab1-7dc8-498b-a02b-aa73e991cc72" />
+<img width="1901" height="950" alt="image" src="https://github.com/user-attachments/assets/6014c3aa-231c-4413-bc51-4fd448d7632d" />
+<img width="1912" height="1055" alt="image" src="https://github.com/user-attachments/assets/c6f3887b-4ca5-4801-8ca0-bd136cbd491e" />
+<img width="1911" height="856" alt="image" src="https://github.com/user-attachments/assets/0436baa2-0182-4891-b6cc-d62f2d29cbb5" />
+<img width="1915" height="997" alt="image" src="https://github.com/user-attachments/assets/4f60acca-7ae9-4394-ac3c-d87b611cf749" />
